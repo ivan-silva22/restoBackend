@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
+import path from "path";
 
 dotenv.config();
 
@@ -17,3 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname,'/public')))
+
+
+app.get('/productos', (req, res)=>{
+
+})
