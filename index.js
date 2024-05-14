@@ -3,9 +3,11 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
 import path from "path";
+import './src/database/dbConnection';
 import productosRouter from "./src/routes/productos.routes";
 import usuariosRouter from "./src/routes/usuarios.routes";
 import pedidosRouter from "./src/routes/pedidos.routes";
+
 
 dotenv.config();
 
