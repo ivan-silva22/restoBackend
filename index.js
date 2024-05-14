@@ -3,6 +3,9 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
 import path from "path";
+import productosRouter from "./src/routes/productos.routes";
+import usuariosRouter from "./src/routes/usuarios.routes";
+import pedidosRouter from "./src/routes/pedidos.routes";
 
 dotenv.config();
 
@@ -20,7 +23,6 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'/public')))
 
-
-app.get('/productos', (req, res)=>{
-
-})
+app.use("/pizzeria-sabores", productosRouter);
+app.use("/pizzeria-sabores/auth", usuariosRouter);
+app.use("/pizzeria-sabores", pedidosRouter);
