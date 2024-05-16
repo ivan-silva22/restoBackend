@@ -1,4 +1,5 @@
 import { check } from "express-validator";
+import resultadoValidacion from "./resultadoValidacion";
 
 const validarProducto = [
   check("nombreProducto")
@@ -35,6 +36,9 @@ const validarProducto = [
     .withMessage("La categoria es un dato obligatorio")
     .isIn(["Clasicas", "Vegetariana", "Vegana", "Postres", "Bebidas"])
     .withMessage('La categoria debe ser una opcion valida'),
+    (req, res, next) =>{
+        resultadoValidacion(req, res, next);
+    }
 ];
 
 export default validarProducto;

@@ -6,12 +6,13 @@ import {
   consultaListaProductos,
   consultaObtenerProducto,
 } from "../controllers/productos.controllers";
+import validarProducto from "../helpers/validarProducto";
 
 const router = Router();
 
 router
   .route("/productos")
-  .post(consultaAgregarProducto)
+  .post(validarProducto ,consultaAgregarProducto)
   .get(consultaListaProductos);
 router
   .route("/productos/:id")

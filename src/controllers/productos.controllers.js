@@ -1,7 +1,14 @@
+import { validationResult } from "express-validator";
 import Producto from "../models/producto"
 
 export const consultaAgregarProducto = async(req, res) =>{
     try {
+      const errors = validationResult(req);
+      if(!errors.isEmpty()){
+        return res.status(400).json({
+            errors: errors.array(),
+        })
+      }
       const nuevoProducto = new Producto(req.body);
       await nuevoProducto.save();
       res.status(201).json({

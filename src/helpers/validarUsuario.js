@@ -1,4 +1,5 @@
 import { check } from "express-validator";
+import resultadoValidacion from "./resultadoValidacion";
 
 const validarUsuario = [
   check("nombreUsuario")
@@ -21,6 +22,9 @@ const validarUsuario = [
     .withMessage(
       "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico."
     ),
+    (req, res, next) =>{
+        resultadoValidacion(req, res, next);
+    }
 ];
 
 export default validarUsuario;
