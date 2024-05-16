@@ -26,3 +26,17 @@ export const consultaListaPedidos = async(req, res)=>{
         })
     }
 }
+
+export const consultaBorrarPedido = async(req, res)=>{
+    try {
+        await Pedido.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: 'El pedido fue eliminado correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar borrar el pedido',
+        })
+    }
+}
