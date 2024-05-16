@@ -27,6 +27,20 @@ export const consultaListaPedidos = async(req, res)=>{
     }
 }
 
+export const consultaEditarPedido = async(req, res)=>{
+    try {
+        await Pedido.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: 'El estado del pedido fue actualizado correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar editar el estado del pedido',
+        });
+    }
+}
+
 export const consultaBorrarPedido = async(req, res)=>{
     try {
         await Pedido.findByIdAndDelete(req.params.id);
