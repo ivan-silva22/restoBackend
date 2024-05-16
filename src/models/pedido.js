@@ -23,6 +23,6 @@ const pedidoSchema = Schema({
     }
 });
 
-const Pedido = mongoose.model('pedidos', pedidoSchema);
+const Pedido = mongoose.model('pedido', pedidoSchema);
 
 export default Pedido;

@@ -1,12 +1,9 @@
 import { Router } from "express"
+import  {consultaAgregarPedido } from "../controllers/pedidos.controllers";
 
 const router = Router();
 
-router.route('/pedidos').get()
-
-// app.get('/productos', (req, res)=>{
-
-// })
+router.route('/pedidos').post(consultaAgregarPedido);
 
 
 export default router;
