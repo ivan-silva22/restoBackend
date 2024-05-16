@@ -14,3 +14,15 @@ export const consultaAgregarPedido = async(req, res) =>{
         })
     }
 }
+
+export const consultaListaPedidos = async(req, res)=>{
+    try {
+        const pedidos = await Pedido.find();
+        res.status(200).json(pedidos);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar obtener los pedidos',
+        })
+    }
+}
