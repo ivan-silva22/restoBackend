@@ -26,3 +26,15 @@ export const consultaListaUsuarios = async(req, res)=>{
         })
     }
 }
+
+export const consultaObtenerUsuario = async(req, res)=>{
+    try {
+        const usuario = await Usuario.findById(req.params.id);
+        res.status(200).json(usuario);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar obtener el usuario',
+        })
+    }
+}
