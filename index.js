@@ -26,5 +26,5 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'/public')))
 
 app.use("/pizzeria-sabores", productosRouter);
-app.use("/pizzeria-sabores/auth", usuariosRouter);
+app.use("/pizzeria-sabores", usuariosRouter);
 app.use("/pizzeria-sabores", pedidosRouter);
