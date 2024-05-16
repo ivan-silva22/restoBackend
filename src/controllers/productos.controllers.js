@@ -13,4 +13,28 @@ export const consultaAgregarProducto = async(req, res) =>{
             mensaje: 'Error al intentar crear un producto',
         })
     }
-}   
+}
+
+export const consultaListaProductos = async(req, res)=>{
+    try {
+        const productos = await Producto.find();
+        res.status(200).json(productos);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar obtener los productos',
+        })
+    }
+}
+
+export const consultaObtenerProducto = async(req, res)=>{
+    try {
+        const producto = await Producto.findById(req.params.id);
+        res.status(200).json(producto);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar obtener el producto',
+        })
+    }
+}
