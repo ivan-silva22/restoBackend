@@ -14,3 +14,15 @@ export const consultaAgregarUsuario = async(req, res)=>{
         });
     }
 }
+
+export const consultaListaUsuarios = async(req, res)=>{
+    try {
+        const usuarios = await Usuario.find();
+        res.status(200).json(usuarios);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar obtener los usuarios',
+        })
+    }
+}
