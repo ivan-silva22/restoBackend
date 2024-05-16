@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   consultaAgregarProducto,
   consultaBorrarProducto,
+  consultaEditarProducto,
   consultaListaProductos,
   consultaObtenerProducto,
 } from "../controllers/productos.controllers";
@@ -15,6 +16,7 @@ router
 router
   .route("/productos/:id")
   .get(consultaObtenerProducto)
-  .delete(consultaBorrarProducto);
+  .delete(consultaBorrarProducto)
+  .put(consultaEditarProducto);
 
 export default router;

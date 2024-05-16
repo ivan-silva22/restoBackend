@@ -53,3 +53,17 @@ export const consultaBorrarProducto = async(req, res)=>{
     }
 }
 
+export const consultaEditarProducto = async(req, res)=>{
+    try {
+        await Producto.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: 'El producto fue actualizado correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al intentar editar el producto',
+        });
+    }
+}
+
