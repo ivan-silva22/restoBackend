@@ -57,3 +57,31 @@ export const consultaObtenerUsuario = async (req, res) => {
     });
   }
 };
+
+export const login = async (req, res) =>{
+  try {
+    const { email, password } = req.body;
+    let usuario = await Usuario.findOne({email});
+    if(!usuario){
+      return res.status(404).json({
+        mensaje: 'Error, email o contraseña invalidos',
+      })
+    }
+    const passwordValido = bcryp.compareSync(password, usuario.password);
+    if(!passwordValido){
+      return res.status(404).json({
+        mensaje: 'Error, email o contraseña invalidos',
+      })
+    }
+    res.status(200).json({
+      mensaje: 'El usuario es correcto',
+      nombreUsuario: usuario.nombreUsuario,
+      rol: usuario.rol, 
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error, email o contraseña invalidos",
+    });
+  }
+}
