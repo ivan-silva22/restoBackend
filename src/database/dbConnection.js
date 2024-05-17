@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import 'dotenv/config';
 
-const cadenaConexion = 'mongodb://localhost:27017/dbpizzasabores';
+const cadenaConexion = process.env.DATABASE_URI || 'mongodb://localhost:27017/dbpizzasabores';
 
 mongoose.connect(cadenaConexion);
 

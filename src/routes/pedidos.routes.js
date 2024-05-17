@@ -11,7 +11,7 @@ const router = Router();
 
 router.route("/pedidos").post(validarPedido ,consultaAgregarPedido).get(consultaListaPedidos);
 router
-  .route("/pedidos/:id")
+  .route("/pedido/:id")
   .delete(consultaBorrarPedido)
   .put(consultaEditarPedido);
 

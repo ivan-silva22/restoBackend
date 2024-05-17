@@ -21,7 +21,7 @@ export const consultaAgregarUsuario = async (req, res) => {
     nuevoUsuario.password = bcryp.hashSync(password, salt);
     await nuevoUsuario.save();
     res.status(201).json({
-      mensaje: "El usuario fue creado correctamente",
+      mensaje: "usuario creado",
       nombreUsuario: nuevoUsuario.nombreUsuario,
       rol: nuevoUsuario.rol,
       _id: nuevoUsuario._id

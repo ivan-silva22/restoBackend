@@ -6,13 +6,14 @@ import {
   login,
 } from "../controllers/usuarios.controllers";
 import validarUsuario from "../helpers/validarUsuario";
+import validarLogin from "../helpers/validarLogin";
 
 const router = Router();
 
 router
   .route("/usuarios")
-  .post(validarUsuario ,consultaAgregarUsuario)
   .get(consultaListaUsuarios);
-router.route("/usuarios/:id").get(consultaObtenerUsuario);
-router.route("/login").post(login)
+router.route("/registro").post(validarUsuario, consultaAgregarUsuario)
+router.route("/usuario/:id").get(consultaObtenerUsuario);
+router.route("/login").post(validarLogin, login)
 export default router;
